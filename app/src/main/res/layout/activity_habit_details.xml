@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/secondary"
+tools:context=".ui.activities.HabitDetailsActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@color/black"
+            android:background="@color/secondary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E2E2E2"
+        android:layout_marginTop="4dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/habitImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/timeit_icon_round"/>
+        <TextView
+            android:id="@+id/habit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Habit Name"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/open_sans_medium"
+            android:textColor="@color/textPrimary"
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/habit_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="*You may upload an image of your laptop to verify the habit."
+        android:textSize="14sp"
+        android:layout_margin="16dp"
+        android:textColor="@color/textSecondary"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/editfield_bg"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reminder Time"
+            android:textSize="18sp"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="@color/textPrimary"
+            />
+
+        <EditText
+            android:id="@+id/date_and_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextField"
+            android:focusableInTouchMode="true"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:fontFamily="@font/opensans_regular"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
+            android:hint="Select Reminder Time"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/AddHabitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/primary_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Create Habit"
+        android:textSize="16sp"
+        android:fontFamily="@font/open_sans_medium"
+        android:textColor="@color/secondary"
+        app:cornerRadius="100dp"/>
+</LinearLayout>
+</ScrollView>

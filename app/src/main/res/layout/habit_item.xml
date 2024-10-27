@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="0dp"
+    android:padding="2dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/primary"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/info_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageIcon"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:visibility="visible"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+
+                    <TextView
+                        android:id="@+id/taskTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginTop="6dp"
+                        android:textStyle="bold"
+                        android:text="Title"
+                        android:fontFamily="@font/opensans_semibold"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/taskDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:layout_marginTop="6dp"
+                        android:text="Description"
+                        android:textColor="@color/textSecondary"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:id="@+id/streak_reminder_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/streakContainer"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:visibility="gone">-->
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/streakIcon"-->
+<!--                                android:layout_width="10dp"-->
+<!--                                android:layout_height="10dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginRight="10dp"-->
+<!--                                android:src="@drawable/bottom_nav_bg"/>-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/streakCount"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:textSize="14sp"-->
+<!--                                android:text="11:00"-->
+<!--                                android:fontFamily="@font/plusjakarta_regular"-->
+<!--                                android:textColor="@color/black" />-->
+<!--                        </LinearLayout> -->
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reminderContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/category_bg"
+                android:backgroundTint="@color/secondary"
+                android:gravity="center"
+                android:padding="6dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/info_container"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/reminderIcon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/timeclock" />
+
+                <TextView
+                    android:id="@+id/reminderTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="11:00"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

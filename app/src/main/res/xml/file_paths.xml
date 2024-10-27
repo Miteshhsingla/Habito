@@ -1,0 +1,4 @@
+<!-- res/xml/file_paths.xml -->
+<paths>
+    <external-cache-path name="external_cache" path="." />
+</paths>
