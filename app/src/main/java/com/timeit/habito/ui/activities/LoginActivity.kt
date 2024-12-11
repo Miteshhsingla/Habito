@@ -41,12 +41,17 @@ class LoginActivity : AppCompatActivity() {
             email = binding.etEmailAddress.text.toString()
             password = binding.etPassword.text.toString()
 
+            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
+            } else if (!email.matches(emailPattern.toRegex())) {
+                binding.etEmailAddress.error = "Invalid email format"
             } else {
                 auth.login(this, tokenManager, email, password)
             }
         }
+
 
     }
 }

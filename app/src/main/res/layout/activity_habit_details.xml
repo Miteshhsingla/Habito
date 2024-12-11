@@ -59,14 +59,23 @@ tools:context=".ui.activities.HabitDetailsActivity">
     </LinearLayout>
 
 
+
     <TextView
         android:id="@+id/habit_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="*You may upload an image of your laptop to verify the habit."
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/editfield_bg"
+        android:fontFamily="@font/opensans_regular"
+        android:padding="16dp"
+        android:text="You may upload an image of your laptop to verify the habit."
         android:textSize="14sp"
-        android:layout_margin="16dp"
-        android:textColor="@color/textSecondary"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/tooltip"
+        android:textColor="#969696"
         />
 
     <LinearLayout
@@ -93,6 +102,8 @@ tools:context=".ui.activities.HabitDetailsActivity">
             android:focusableInTouchMode="true"
             android:cursorVisible="false"
             android:focusable="false"
+            android:textColorHint="@color/textSecondary"
+            android:textColor="@color/textPrimary"
             android:fontFamily="@font/opensans_regular"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
             android:hint="Select Reminder Time"/>

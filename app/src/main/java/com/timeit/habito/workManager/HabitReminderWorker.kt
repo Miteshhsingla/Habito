@@ -22,10 +22,8 @@ class HabitReminderWorker(
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("HabitPrefs", Context.MODE_PRIVATE)
 
     override fun doWork(): Result {
-        // Get the habit ID from the input data
         val habitId = inputData.getString("user_habit_id") ?: return Result.failure()
         val habitName = inputData.getString("habit_name") ?: "your habit"
-//        val habitTime = getHabitTimeFromPreferences(habitId)
 
         showNotification(habitName)
         rescheduleNextDay(habitId)
