@@ -27,11 +27,12 @@ class Authentication {
                     val token = response.body()?.access_token
                     val username = response.body()?.username
                     if (token != null && username != null) {
-                        tokenManager.saveToken(token,username)
+                        tokenManager.saveToken(token,username,email)
                         Log.d("token",token)
                         val intent = Intent(context, MainActivity::class.java)
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         context.startActivity(intent)
+                        Toast.makeText(context,"Logged in Successfully",Toast.LENGTH_LONG).show()
                     }
                 } else {
                     Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,6 @@
 package com.timeit.habito.data.dataModels
 
 data class HabitAnalyticsData(
-    val name: String,
-    val streakValues: List<Int>
+    val habit_name: String,
+    val breakdown: Map<String, Boolean>
 )

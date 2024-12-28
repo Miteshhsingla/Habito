@@ -1,6 +1,7 @@
 package com.timeit.habito.data
 
 import com.timeit.habito.data.dataModels.AddHabitRequest
+import com.timeit.habito.data.dataModels.HabitAnalyticsData
 import com.timeit.habito.data.dataModels.HabitDataModel
 import com.timeit.habito.data.dataModels.LeaderboardResponse
 import com.timeit.habito.data.dataModels.LoginRequest
@@ -12,6 +13,7 @@ import okhttp3.MultipartBody.*
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -60,6 +62,11 @@ interface ApiService {
         @Header("Authorization") authToken: String,
         @Query("habit_id") habitId: String
         ): Call<List<LeaderboardResponse>>
+
+    @GET("user/streaks")
+    suspend fun getHabitAnalytics(
+        @Header("Authorization") token: String
+    ): Response<List<HabitAnalyticsData>>
 
 }
 

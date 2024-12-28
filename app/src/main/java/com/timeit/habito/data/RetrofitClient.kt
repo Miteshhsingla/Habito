@@ -7,9 +7,16 @@ import java.util.concurrent.TimeUnit
 
 
 object RetrofitClient {
-    private const val BASE_URL = "http://10.22.13.75:8000/"
-//    private const val BASE_URL = "http://192.168.47.46:8000/"
-//    private const val BASE_URL = "http://192.168.75.46:8000/"
+    //hostel ip
+    //private const val BASE_URL = "http://10.22.13.75:8000/"
+
+    //mobile hotspot ip
+    //private const val BASE_URL = "http://192.168.47.46:8000/"
+
+    //lakshay ip
+//      private const val BASE_URL = "http://192.168.95.46:8000/"
+    //goji ip
+      private const val BASE_URL = "http://10.42.0.96:8000/"
 
     val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(15, TimeUnit.SECONDS)

@@ -1,6 +1,7 @@
 package com.timeit.habito.utils
 
 import android.content.Context
+import com.timeit.habito.utils.Constants.EMAIL
 
 import com.timeit.habito.utils.Constants.PREFS_TOKEN_FILE
 import com.timeit.habito.utils.Constants.ROLE
@@ -13,10 +14,12 @@ class TokenManager @Inject constructor(@ApplicationContext context: Context) {
 
     private var prefs = context.getSharedPreferences(PREFS_TOKEN_FILE, Context.MODE_PRIVATE)
 
-    fun saveToken(token : String,username:String){
+    fun saveToken(token : String,username:String,email:String){
         val editor = prefs.edit()
         editor.putString(USER_TOKEN,token)
         editor.putString(USERNAME,username)
+        editor.putString(USERNAME,username)
+        editor.putString(EMAIL,email)
         editor.apply()
     }
 
@@ -26,6 +29,9 @@ class TokenManager @Inject constructor(@ApplicationContext context: Context) {
 
     fun getUsername() : String?{
         return prefs.getString(USERNAME, null)
+    }
+    fun getEmail() : String?{
+        return prefs.getString(EMAIL, null)
     }
 
     fun clearToken() {

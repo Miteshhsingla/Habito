@@ -1,60 +1,72 @@
 package com.timeit.habito.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.timeit.habito.R
+import com.timeit.habito.data.RetrofitClient
 import com.timeit.habito.data.dataModels.HabitAnalyticsData
 import com.timeit.habito.databinding.ActivityStreakAnalyticsBinding
 import com.timeit.habito.ui.adapters.HabitAnalyticsAdapter
-import kotlin.random.Random
+import com.timeit.habito.utils.TokenManager
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class StreakAnalytics : AppCompatActivity() {
-    private lateinit var binding:ActivityStreakAnalyticsBinding
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivityStreakAnalyticsBinding
     private lateinit var habitAdapter: HabitAnalyticsAdapter
+    @Inject
+    lateinit var tokenManager: TokenManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStreakAnalyticsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        tokenManager = TokenManager(this)
+        // Toolbar setup
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             title = "Streak Analytics"
             setDisplayHomeAsUpEnabled(true)
-            setSupportActionBar(binding.toolbar)
             setHomeAsUpIndicator(R.drawable.ic_android_back)
         }
 
+        // RecyclerView setup
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        habitAdapter = HabitAnalyticsAdapter(emptyList())
+        binding.recyclerView.adapter = habitAdapter
 
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        val habits = generateDummyData()
-        habitAdapter = HabitAnalyticsAdapter(habits)
-
-        recyclerView.adapter = habitAdapter
-
+        // Fetch data from API
+        fetchHabitAnalyticsData()
     }
 
-    fun generateDummyData(): List<HabitAnalyticsData> {
-        val habitNames = listOf("Jogging", "Coding", "Reading")
-        val random = Random
+    private fun fetchHabitAnalyticsData() {
+        lifecycleScope.launch {
+            val token = tokenManager.getToken()
 
-        return habitNames.map { name ->
-            HabitAnalyticsData(name, List(7) { random.nextInt(0, 2) })
+            try {
+                val response = RetrofitClient.apiService.getHabitAnalytics("Bearer $token")
+                if (response.isSuccessful && response.body() != null) {
+                    val habitAnalytics = response.body()!!
+                    habitAdapter.updateData(habitAnalytics)
+                } else {
+                    Log.e("StreakAnalytics", "Error: ${response.errorBody()?.string()}")
+                }
+            } catch (e: Exception) {
+                Log.e("StreakAnalytics", "Exception: ${e.message}")
+            }
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
