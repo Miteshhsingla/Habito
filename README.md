@@ -45,6 +45,11 @@ Contributions to the Android app are welcome! Here's how you can contribute:
 
 ---
 
+## Licensing
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+---
+
 ## Acknowledgements
 - Inspired by the challenges of habit formation and maintenance.
 - Special thanks to contributors and supporters.
